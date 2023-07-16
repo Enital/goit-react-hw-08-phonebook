@@ -1,46 +1,111 @@
-import Contacts from "Pages/Contacts/Contacts";
-import Home from "Pages/Home/Home";
-import Login from "Pages/Login/Login";
-import Register from "Pages/Register/Register";
-// import { Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
-import Header from "./Header/Header";
-// import Layout from "./Layout/Layout";
-// import Loader from "./Loader/Loader";
+import { Layout } from './Layout/Layout';
+import { Route, Routes } from 'react-router-dom';
+import { lazy, useEffect } from 'react';
+import { refreshUser } from 'redux/Auth/authOperations';
+import { useAuth } from './Hooks';
+import { useDispatch } from 'react-redux';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoutes';
 
-export const App = () => {
+const HomePage = lazy(() => import('../components/Pages/Home/Home'));
+const LoginPage = lazy(() => import('../components/Pages/Login/Login'));
+const ContactsPage = lazy(() => import('./Pages/RootContact/rootContact'));
+const RegisterPage = lazy(() => import('../components/Pages/Register/Register'));
+
+function App() {
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
-    <div>
-      <Header />
-
-      <Routes>
-        <Route exact path="/" element={<Home/>} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/login" element={<Login/>} />
-        {/* <Route path="/contacts" element={<Contacts/>} /> */}
-      </Routes>
-    </div>
-    // <Suspense fallback={<Loader/>}>
-    //   <Routes>
-    //     <Route path="/" element={<Layout />}
-    //       // <Route path="login" element={<Login />}
-    //     // </Route>
-    //   </Routes>
-    // </Suspense>
-    // <Suspense fallback={<Loader />}>
-      // <Routes>
-      //   <Route path="/" element={<Layout />}>
-      //     <Route index element={<Login />} />
-      //     <Route path="register" element={<Register />} />
-      //     <Route path="contacts" element={<Contacts />} />
-        
-      //     {/* <Route path="movies/:movieId" element={<MovieDetail />} >
-      //       <Route path="cast" element={<Casts />} />
-      //       <Route path="reviews" element={<Reviews/> } />
-      //     </Route>
-      //     <Route path="*" element={<NotFound />}/> */}
-      //   </Route>
-      // </Routes>
-    // </Suspense>
+    !isRefreshing && (<Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/contact"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contact"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contact" component={<LoginPage />} />
+          }
+        />
+      </Route>
+    </Routes>)
+    
   );
-};
+}
+
+
+export default App;
+// import { lazy, useEffect } from 'react';
+// import { Navigate, Route, Routes } from 'react-router-dom';
+// import { Layout } from './Layout/Layout';
+// import { RestrictedRoute } from './RestrictedRoutes';
+// import { PrivateRoute } from './PrivateRoute';
+// import { useDispatch } from 'react-redux';
+// import { useAuth } from './Hooks';
+// import { refreshUser } from 'redux/Auth/authOperations';
+
+// const HomePage = lazy(() => import('../components/Pages/Home/Home'));
+// const LoginPage = lazy(() => import('../components/Pages/Login/Login'));
+// const ContactsPage = lazy(() => import('./Pages/RootContact/rootContact'));
+// const RegisterPage = lazy(() => import('../components/Pages/Register/Register'));
+
+// function App () {
+//   const dispatch = useDispatch();
+//   const { isRefreshing } = useAuth();
+
+//   useEffect(() => {
+//     dispatch(refreshUser());
+//   }, [dispatch]);
+
+//   return isRefreshing ? (
+//     <b>Refreshing user...</b>
+//   ) : (
+//     <Routes>
+//       <Route path="/" element={<Layout />}>
+//         <Route index element={<HomePage />} />
+//         <Route
+//           path="/register"
+//           element={
+//             <RestrictedRoute
+//               redirectTo="/contacts"
+//               component={<RegisterPage />}
+//             />
+//           }
+//         />
+//         <Route
+//           path="/login"
+//           element={
+//             <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+//           }
+//         />
+//         <Route
+//           path="/contacts"
+//           element={
+//             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+//           }
+//         />
+//       </Route>
+//       <Route path="*" element={<Navigate to="/" />} />
+//     </Routes>
+//   );
+// };
+
+// export default App;

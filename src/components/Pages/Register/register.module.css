@@ -1,0 +1,11 @@
+
+.register{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 450px;
+    padding: 15px;
+    margin: 20px auto;
+    box-shadow: rgba(199, 203, 209, 0.38) 0px 0px 15px;
+    border-radius: 5px;
+}

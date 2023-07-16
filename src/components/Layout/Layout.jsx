@@ -1,13 +1,14 @@
-import Header from "components/Header/Header";
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
+import { AppBar } from 'components/AppBar/AppBar';
 
-function Layout () {
+export function Layout() {
     return (
         <div>
-            <Header />
-            <Outlet />
+            <AppBar />
+            <Suspense fallback={null}>
+                <Outlet />
+            </Suspense>
         </div>
-    )
-};
-
-export default Layout;
+    );
+}
