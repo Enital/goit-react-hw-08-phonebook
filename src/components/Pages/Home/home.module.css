@@ -1,0 +1,9 @@
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px;
+}
+.title{
+    color: #f4f4f4;
+}

@@ -15,6 +15,7 @@
     "notiflix": "^3.2.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-icons": "^4.10.1",
     "react-loader-spinner": "^5.3.4",
     "react-password-strength-bar": "^0.4.1",
     "react-redux": "^8.1.1",

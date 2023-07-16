@@ -18,7 +18,7 @@ export default function RootContacts() {
     }, [dispatch]);
 
     return (
-        <div className={css.appDiv}>
+        <div className={css.contacts}>
             <ContactForm />
             <Filter />
             {isLoading && !error && <b>Request in progress...</b>}

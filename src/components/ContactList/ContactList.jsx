@@ -10,6 +10,7 @@ function ContactList() {
     const dispatch = useDispatch();
     const contacts = useSelector(getVisibleContacts);
     const isLoading = useSelector(getIsLoading);
+    // console.log(contacts);
 
     useEffect(() => {
         dispatch(fetchContact());
@@ -17,20 +18,19 @@ function ContactList() {
 
     const deleteContactBtn = id => {
         dispatch(deleteContact(id));
-        // getContacts();
     }
     
     return (
         <>
             {isLoading && <Loader />}
             <h2>Contacts</h2>
-            <ul>
-                {contacts.map(({ id, name, phone }) => {
+            <ul className={css.list}>
+                {contacts.map(({ id, name, number }) => {
                     return (<>
-                        <li key={id} className={css.li}>
+                        <li key={id} className={css.item}>
                             <div className={css.contact}>
                                 <span className={css.contactName}>{name}</span>
-                                <span>{phone}</span>
+                                <span>{number}</span>
                             </div>
                             <button className={css.delete} type='button' onClick={() => deleteContactBtn(id)}>Delete contact</button>
                         </li>

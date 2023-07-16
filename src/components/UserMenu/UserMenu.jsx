@@ -1,4 +1,3 @@
-import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/Auth/authOperations';
 import { useAuth } from '../Hooks';
@@ -12,10 +11,10 @@ export const UserMenu = () => {
 
     return (
         <div className={css.user}>
-            <p className={css.username}>Welcome, {user.name} !</p>
-            <Button className={css.userButton} variant="outlined" type="button" onClick={() => dispatch(logOut())}>
+            <p className={css.userName}>Welcome, {user.name} !</p>
+            <button className={css.userButton} type="button" onClick={() => dispatch(logOut())}>
                 Logout
-            </Button>
+            </button>
         </div>
     );
 }

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContactsList } from 'redux/selectors';
 import { addContact } from '../../redux/Contacts/operations';
+import { Notify } from 'notiflix';
+import { FaRegSave } from "react-icons/fa";
 
 import css from './contactForm.module.css';
 
@@ -29,7 +31,7 @@ export const ContactForm = () => {
         );
 
         if (contacts) {
-            alert(`${name} або ${number} вже є в телефонній книзі`);
+            Notify.failure(`${name} is already in contacts`);
             return;
         }
         dispatch(addContact(contact));
@@ -53,8 +55,8 @@ export const ContactForm = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <label className={css.formName}>
+            <form onSubmit={handleSubmit} className={css.form}>
+                <label className={css.label}>
                     Name
                     <input
                         className={css.inputTitle}
@@ -81,11 +83,12 @@ export const ContactForm = () => {
                     />
                 </label>
 
-                <button className={css.btnForm} type="submit">
-                    Add contact
+                <button className={css.addButton} type="submit">
+                    <FaRegSave />
+                    <span className={css.addSpan}>Add contact</span>
                 </button>
             </form>
-            <h3>Телефонна книга: {contactsList.length}</h3>
+            <h3>Phone book: {contactsList.length} items</h3>
         </>
     );
 }
