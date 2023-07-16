@@ -19,16 +19,14 @@ export function LoginForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className={css.form} autoComplete="off">
-            <label className={css.label}>
-                Email
+        <div className={css.login}>
+            <form onSubmit={handleSubmit} className={css.form} autoComplete="off">
+                <label className={css.label}>Email</label>
                 <input className={css.input} type="email" name="email" />
-            </label>
-            <label className={css.label}>
-                Password
+                <label className={css.label}>Password</label>
                 <input className={css.input} type="password" name="password" />
-            </label>
-            <button type="submit">Login</button>
-        </form>
+                <button type="submit">Login</button>
+            </form>
+        </div>
     );
 }

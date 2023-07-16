@@ -1,12 +1,17 @@
+.register{
+    padding: 20px 10px;
+}
 .form{
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    width: 300px;
+    justify-content: center;
+    align-items: center;
+}
+.label{
+    margin-bottom: 5px;
+    color: #f4f4f4;
 }
 .input{
-    margin-top: 10px;
-}
-.required{
-    margin-top: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }

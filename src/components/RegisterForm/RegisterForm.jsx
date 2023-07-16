@@ -1,4 +1,3 @@
-import { Button, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { register } from '../../redux/Auth/authOperations';
@@ -49,26 +48,29 @@ export function RegisterForm() {
     return (
         <div className={css.register}>
             <form onSubmit={handleSubmit} className={css.form} autoComplete="off">
-                <TextField label="Name" variant="outlined" size="small" className={css.input}
+                <label className={css.label}>Name</label>
+                <input className={css.input}
                     type="text"
                     name="name"
                     required
                     value={name}
                     onChange={handleNameChange} />
-                <TextField label="E-mail" variant="outlined" size="small" className={css.input}
+                <label className={css.label}>Email</label>
+                <input className={css.input}
                     type="text"
                     name="email"
                     required
                     value={email}
                     onChange={handleEmailChange} />
-                <TextField label="Password" variant="outlined" size="small" className={css.input}
+                <label className={css.label}>Password</label>
+                <input className={css.input}
                     type="text"
                     name="password"
                     required
                     value={password}
                     onChange={handlePasswordChange} />
-                <span className={css.required}>* This field is required</span>
-                <Button variant="outlined" type="submit">Register</Button>
+                
+                <button type="submit">Register</button>
             </form>
         </div>
     );

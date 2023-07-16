@@ -20,9 +20,13 @@ export default function RootContacts() {
     return (
         <div className={css.contacts}>
             <ContactForm />
-            <Filter />
-            {isLoading && !error && <b>Request in progress...</b>}
-            <ContactList />
+            <div className={css.contactsList}>
+                <Filter />
+                <ContactList />
+            </div>
+            
+
+            {isLoading && !error}
         </div>
     )
 }

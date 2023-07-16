@@ -57,9 +57,9 @@ export const ContactForm = () => {
         <>
             <form onSubmit={handleSubmit} className={css.form}>
                 <label className={css.label}>
-                    Name
+                    Name</label>
                     <input
-                        className={css.inputTitle}
+                        className={css.input}
                         onChange={handleChange}
                         type="text"
                         name="name"
@@ -68,11 +68,11 @@ export const ContactForm = () => {
                         required
                         value={name}
                     />
-                </label>
-                <label className={css.formNumber}>
-                    Number
+                
+                <label className={css.label}>
+                    Number</label>
                     <input
-                        className={css.inputTitle}
+                        className={css.input}
                         onChange={handleChange}
                         type="tel"
                         name="number"
@@ -81,14 +81,13 @@ export const ContactForm = () => {
                         required
                         value={number}
                     />
-                </label>
 
                 <button className={css.addButton} type="submit">
-                    <FaRegSave />
+                    <FaRegSave size={ 20 }/>
                     <span className={css.addSpan}>Add contact</span>
                 </button>
             </form>
-            <h3>Phone book: {contactsList.length} items</h3>
+            {/* <h3>Phone book: {contactsList.length} items</h3> */}
         </>
     );
 }

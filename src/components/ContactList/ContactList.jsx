@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContact, deleteContact } from "../../redux/Contacts/operations";
 import { getIsLoading, getVisibleContacts } from "../../redux/selectors";
+
 import css from './contactList.module.css'
 
 function ContactList() {
@@ -21,9 +22,9 @@ function ContactList() {
     }
     
     return (
-        <>
+        <div className={css.contactList}>
             {isLoading && <Loader />}
-            <h2>Contacts</h2>
+            <h2 className={css.title}>Contacts</h2>
             <ul className={css.list}>
                 {contacts.map(({ id, name, number }) => {
                     return (<>
@@ -38,7 +39,7 @@ function ContactList() {
                     )
                 })}
             </ul>
-        </>
+        </div>
     )
 }
 

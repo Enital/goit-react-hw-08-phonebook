@@ -8,7 +8,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: radial-gradient(circle, #721515, #761a19, #7a1e1e, #7d2322, #812727);
-  /* background-image: linear-gradient(to bottom, #782424, #822929, #8c2d2d, #963232, #a03737, #a33737, #a63737, #a93737, #a53231, #a12c2c, #9d2727, #992121); */
 }
 
 code {
@@ -28,6 +27,8 @@ button:active{
 ul{
   padding: 0;
 }
-h2{
+h1,h2,h3,p,span{
+  text-align: center;
   margin: 0;
+  color: aliceblue;
 }

@@ -3,6 +3,10 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 10px;
 }
+.title{
+    margin-top: 20px;
+    text-align: center;
+}
 .item{
     list-style: none;
     width: 270px;
@@ -10,15 +14,21 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
-    background-color: cornsilk;
+    /* background-color: cornsilk; */
     padding: 4px 10px;
     border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    box-shadow: rgb(146, 148, 248, 0.6) 0px 1px 4px;
 }
 .delete{
     margin-left: 10px;
     height: 40px;
-    background-color: lightcoral;
+    background-color: inherit;
+    border: 1px solid red;
+    color: #f4f4f4;
+    transition: all 500ms;
+}
+.delete:hover{
+    background-color: red;
 }
 .contact{
     display: flex;
@@ -26,5 +36,6 @@
     width: 175px;
 }
 .contactName{
+    color: #f4f4f4;
     font-weight: 600;
 }

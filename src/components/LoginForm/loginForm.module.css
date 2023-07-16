@@ -1,0 +1,17 @@
+.login{
+    padding: 20px 10px;
+}
+.form{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.label{
+    margin-bottom: 5px;
+    color: #f4f4f4;
+}
+.input{
+    margin-bottom: 10px;
+}
