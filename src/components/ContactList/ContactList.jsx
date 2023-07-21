@@ -2,6 +2,7 @@ import Loader from "components/Loader/Loader";
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+// import { IoTrashBinOutline } from "react-icons/io5";
 import { fetchContact, deleteContact } from "../../redux/Contacts/operations";
 import { getIsLoading, getVisibleContacts } from "../../redux/selectors";
 
@@ -11,7 +12,6 @@ function ContactList() {
     const dispatch = useDispatch();
     const contacts = useSelector(getVisibleContacts);
     const isLoading = useSelector(getIsLoading);
-    // console.log(contacts);
 
     useEffect(() => {
         dispatch(fetchContact());
@@ -33,7 +33,10 @@ function ContactList() {
                                 <span className={css.contactName}>{name}</span>
                                 <span>{number}</span>
                             </div>
-                            <button className={css.delete} type='button' onClick={() => deleteContactBtn(id)}>Delete contact</button>
+                            <button className={css.delete} type='button' onClick={() => deleteContactBtn(id)}>
+                                {/* <IoTrashBinOutline className={css.deleteIcon}/> */}
+                                Delete contact
+                            </button>
                         </li>
                     </>
                     )

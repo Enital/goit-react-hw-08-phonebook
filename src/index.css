@@ -17,6 +17,7 @@ code {
 button{
   border: none;
   padding: 4px;
+  cursor: pointer;
   border-radius: 5px;
   transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 250ms;
 }

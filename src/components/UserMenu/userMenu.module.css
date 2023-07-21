@@ -3,15 +3,13 @@
     align-items: center;
 }
 .userButton{
-    margin-left: 10px;
+    margin-left: 20px;
     height: 30px;
-    width: 80px;
+    width: 90px;
     font-size: 18px;
-    /* color: aliceblue; */
     color: #f4f4f4;
     background-color: inherit;
     border: 1px solid rgb(146, 148, 248);
-    /* color: rgba(146, 148, 248, 1); */
     position: relative;
     overflow: hidden;
 }
@@ -28,13 +26,54 @@
     background: linear-gradient(120deg, transparent, rgba(146, 148, 248, 0.4), transparent);
     transition: all 650ms;
 }
-
 .userButton:hover:before {
     left: 100%;
 }
 .userName{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 30px;
+    text-align: center;
+    border: none;
+    outline: none;
     color: #f4f4f4;
+    background: #111;
     position: relative;
     z-index: 0;
     border-radius: 10px;
+    
+}
+.userName::before{
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+.userName:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #721515;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
 }
